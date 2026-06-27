@@ -99,4 +99,6 @@ Both commands should complete with no errors before pushing.
 These are not blocking CI but are required before the pipeline runs end-to-end locally.
 
 - [ ] **MinIO → Postgres load missing** — `ingest.py` uploads the CSV to MinIO but nothing reads it back into `raw.places_county` in Postgres. dbt has no table to run against. Fix: add a `load_to_postgres()` function in `ingest.py` and a second task in the DAG.
-- [ ] **Airflow container missing Python deps** — the stock `apache/airflow:2.8.0` image does not have `boto3` or `requests` installed. The DAG will crash on first run. Fix: add `_PIP_ADDITIONAL_REQUIREMENTS: "boto3==1.34.14 requests==2.31.0"` to the `airflow` service in `docker-compose.yml`.
+- [ ] **Airflow container missing Python deps and env vars** — the stock `apache/airflow:2.8.0` image does not have `boto3` or `requests` installed, and the `airflow` service in `docker-compose.yml` does not pass the `MINIO_*` variables that `ingest.py` reads. The DAG will crash on import (`ModuleNotFoundError`) and even if deps are installed, `MINIO_ENDPOINT` and `MINIO_BUCKET` will be `None` at runtime. Fix requires two changes in `docker-compose.yml` under the `airflow` service:
+  - Add `_PIP_ADDITIONAL_REQUIREMENTS: "boto3==1.34.14 requests==2.31.0"` to install deps at container startup
+  - Add `MINIO_ENDPOINT`, `MINIO_BUCKET`, `MINIO_ROOT_USER`, `MINIO_ROOT_PASSWORD` to the `environment` block so `ingest.py` can read them via `os.getenv()`
