@@ -1,0 +1,9 @@
+*.env
+*.pyc
+*.tfstate
+*.tfstate.*
+*.egg-info/
+.idea/
+__pycache__/
+venv/
+.venv/

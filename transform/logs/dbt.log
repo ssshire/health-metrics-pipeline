@@ -1,0 +1,45 @@
+[0m19:25:35.810368 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa44590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bf7a850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bf7ad50>]}
+
+
+============================== 19:25:35.813918 | 7de04d08-5c31-41a3-bc3d-55353d7b8ccc ==============================
+[0m19:25:35.813918 [info ] [MainThread]: Running with dbt=1.12.0-b3
+[0m19:25:35.814284 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'static_parser': 'True', 'target_path': 'None', 'write_json': 'True', 'no_print': 'None', 'printer_width': '80', 'log_path': '/Users/saadaqshire/projects/health-metrics-pipeline/transform/logs', 'use_colors': 'True', 'invocation_command': 'dbt parse --profiles-dir .', 'quiet': 'False', 'fail_fast': 'False', 'warn_error': 'None', 'introspect': 'True', 'maximum_seed_size_mib': '1', 'log_format': 'default', 'debug': 'False', 'cache_selected_only': 'False', 'partial_parse': 'True', 'profiles_dir': '.'}
+[0m19:25:37.813665 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '7de04d08-5c31-41a3-bc3d-55353d7b8ccc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10be4ab10>]}
+[0m19:25:37.848694 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '7de04d08-5c31-41a3-bc3d-55353d7b8ccc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10be6b130>]}
+[0m19:25:37.849445 [info ] [MainThread]: Registered adapter: postgres=1.10.2
+[0m19:25:37.905272 [debug] [MainThread]: checksum: 152abf8b8d38325fc1677c0a59be09f71f16e41d4e6657f540a9659261980b0a, vars: {}, profile: health_metrics, target: dev, version: 1.12.0b3
+[0m19:25:37.905847 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m19:25:37.906070 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '7de04d08-5c31-41a3-bc3d-55353d7b8ccc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c099d50>]}
+[0m19:25:38.646100 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '7de04d08-5c31-41a3-bc3d-55353d7b8ccc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d4595e0>]}
+[0m19:25:38.648463 [info ] [MainThread]: Performance info: /Users/saadaqshire/projects/health-metrics-pipeline/transform/target/perf_info.json
+[0m19:25:38.699177 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/saadaqshire/projects/health-metrics-pipeline/transform/target/manifest.json
+[0m19:25:38.701343 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/saadaqshire/projects/health-metrics-pipeline/transform/target/semantic_manifest.json
+[0m19:25:38.708769 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/saadaqshire/projects/health-metrics-pipeline/transform/target/osi_document.json
+[0m19:25:38.712061 [debug] [MainThread]: Resource report: {"command_name": "parse", "command_success": true, "command_wall_clock_time": 2.9926353, "process_in_blocks": "0", "process_kernel_time": 0.21735, "process_mem_max_rss": "161447936", "process_out_blocks": "0", "process_user_time": 1.87048}
+[0m19:25:38.712355 [debug] [MainThread]: Command `dbt parse` succeeded at 19:25:38.712306 after 2.99 seconds
+[0m19:25:38.712584 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bfbd8d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d7303d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bee35f0>]}
+[0m19:25:38.712807 [debug] [MainThread]: Flushing usage events
+[0m19:25:39.192255 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:30:57.666650 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b038050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c582990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c582ad0>]}
+
+
+============================== 19:30:57.670213 | 925dd87e-b160-40f1-9b11-17847b1799cf ==============================
+[0m19:30:57.670213 [info ] [MainThread]: Running with dbt=1.12.0-b3
+[0m19:30:57.670553 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'version_check': 'True', 'empty': 'None', 'log_format': 'default', 'warn_error': 'None', 'partial_parse': 'True', 'log_path': '/Users/saadaqshire/projects/health-metrics-pipeline/transform/logs', 'profiles_dir': '/Users/saadaqshire/projects/health-metrics-pipeline/transform', 'introspect': 'True', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'quiet': 'False', 'use_colors': 'True', 'target_path': 'None', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'indirect_selection': 'eager', 'static_parser': 'True', 'invocation_command': 'dbt parse', 'no_print': 'None'}
+[0m19:30:57.771808 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '925dd87e-b160-40f1-9b11-17847b1799cf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c3baea0>]}
+[0m19:30:57.805106 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '925dd87e-b160-40f1-9b11-17847b1799cf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c3a6be0>]}
+[0m19:30:57.806422 [info ] [MainThread]: Registered adapter: postgres=1.10.2
+[0m19:30:57.865053 [debug] [MainThread]: checksum: 152abf8b8d38325fc1677c0a59be09f71f16e41d4e6657f540a9659261980b0a, vars: {}, profile: health_metrics, target: dev, version: 1.12.0b3
+[0m19:30:57.949672 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m19:30:57.949939 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m19:30:57.950092 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m19:30:57.975425 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '925dd87e-b160-40f1-9b11-17847b1799cf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c65d750>]}
+[0m19:30:57.977389 [info ] [MainThread]: Performance info: /Users/saadaqshire/projects/health-metrics-pipeline/transform/target/perf_info.json
+[0m19:30:58.030677 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/saadaqshire/projects/health-metrics-pipeline/transform/target/manifest.json
+[0m19:30:58.032980 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/saadaqshire/projects/health-metrics-pipeline/transform/target/semantic_manifest.json
+[0m19:30:58.043949 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/saadaqshire/projects/health-metrics-pipeline/transform/target/osi_document.json
+[0m19:30:58.046419 [debug] [MainThread]: Resource report: {"command_name": "parse", "command_success": true, "command_wall_clock_time": 0.46371466, "process_in_blocks": "0", "process_kernel_time": 0.146149, "process_mem_max_rss": "144621568", "process_out_blocks": "0", "process_user_time": 1.065439}
+[0m19:30:58.046728 [debug] [MainThread]: Command `dbt parse` succeeded at 19:30:58.046664 after 0.46 seconds
+[0m19:30:58.046957 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d46f7a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d46f5c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c54b4d0>]}
+[0m19:30:58.047157 [debug] [MainThread]: Flushing usage events
+[0m19:30:58.529340 [debug] [MainThread]: An error was encountered while trying to flush usage events
