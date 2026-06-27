@@ -7,3 +7,8 @@
 __pycache__/
 venv/
 .venv/
+
+# dbt
+transform/target/
+transform/dbt_packages/
+transform/logs/
