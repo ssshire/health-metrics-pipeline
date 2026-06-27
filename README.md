@@ -22,22 +22,73 @@ Source: [CDC PLACES — Local Data for Better Health, County Data](https://data.
 
 County-level prevalence estimates for chronic disease measures across the US (obesity, diabetes, hypertension, etc).
 
-## Quickstart
+## Running the project
+
+### 1. Prerequisites
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
+- Python 3.11+
+
+### 2. Start the services
 
 ```bash
 cp .env.example .env
 docker compose up
 ```
 
-Airflow UI: http://localhost:8080  
-MinIO console: http://localhost:9001
+This starts three containers: Postgres, MinIO, and Airflow.
 
-Enable the `health_metrics_ingest` DAG in the Airflow UI to trigger the first run.
+| Service | URL | Credentials |
+|---------|-----|------------|
+| Airflow UI | http://localhost:8080 | check terminal for generated password |
+| MinIO console | http://localhost:9001 | `minioadmin` / `minioadmin` |
+
+### 3. Run the ingest script locally (v1)
+
+> The Airflow DAG cannot run the ingest inside Docker yet (see Known gaps). Run it locally against the Docker MinIO instead.
+
+First update `MINIO_ENDPOINT` in your `.env` — the default points to the Docker-internal hostname which only works inside the container network:
+
+```bash
+# in .env, change:
+MINIO_ENDPOINT=http://localhost:9000
+```
+
+Then run:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python ingest/ingest.py
+```
+
+On success you will see:
+```
+Downloading CDC PLACES data...
+Uploaded XXXXX bytes to s3://health-metrics-raw/raw/places_county_<date>.csv
+```
+
+Open the MinIO console at http://localhost:9001 → `health-metrics-raw` bucket to verify the file landed.
+
+### 4. dbt (not yet runnable end-to-end)
+
+dbt reads from `raw.places_county` in Postgres. That table does not exist until the MinIO → Postgres load step is built (v2). You can validate the project structure without a database connection:
+
+```bash
+source venv/bin/activate
+cd transform
+POSTGRES_USER=airflow POSTGRES_PASSWORD=airflow POSTGRES_DB=airflow dbt parse --profiles-dir .
+```
+
+### 5. Airflow DAG (not yet runnable end-to-end)
+
+The `health_metrics_ingest` DAG will appear in the Airflow UI at http://localhost:8080 but triggering it will fail until the v2 gaps are resolved (missing deps and env vars in the container).
 
 ## Stack
 
 | Layer | Tool |
-|---|---|
+|-------|------|
 | Ingestion | Python + Apache Airflow 2.8 |
 | Storage | MinIO (S3-compatible, local) |
 | Transform | dbt + PostgreSQL 15 |
