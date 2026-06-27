@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: places_county
+        description: CDC PLACES county-level chronic disease prevalence loaded from S3/MinIO
+
+models:
+  - name: stg_places_county
+    description: Cleaned and typed CDC PLACES county data
+    columns:
+      - name: county_fips
+        description: 5-digit FIPS code uniquely identifying the county
+        tests:
+          - not_null
+      - name: measure
+        description: The specific health measure (e.g. "Obesity among adults")
+        tests:
+          - not_null
+      - name: data_value
+        description: Prevalence percentage for this measure in this county
+        tests:
+          - not_null
+      - name: year
+        description: Survey year the data was collected
+        tests:
+          - not_null
